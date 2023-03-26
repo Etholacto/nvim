@@ -1,3 +1,6 @@
+--Assigns leader to spacebar
+vim.g.mapleader = " "
+
 --Exit the current file
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 
@@ -40,3 +43,15 @@ end)
 
 --Toggle the file tree
 vim.keymap.set("n","<leader>b", vim.cmd.NvimTreeToggle)
+
+--window managing 
+vim.keymap.set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>')
+vim.keymap.set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>')
+vim.keymap.set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>') 
+vim.keymap.set('n', '<A-4>', '<Cmd>BufferGoto 4<CR>')
+vim.keymap.set('n', '<A-5>', '<Cmd>BufferGoto 5<CR>')
+vim.keymap.set('n', '<A-6>', '<Cmd>BufferGoto 6<CR>')
+vim.keymap.set('n', '<A-7>', '<Cmd>BufferGoto 7<CR>')
+vim.keymap.set('n', '<A-8>', '<Cmd>BufferGoto 8<CR>')
+vim.keymap.set('n', '<A-9>', '<Cmd>BufferGoto 9<CR>')
+vim.keymap.set('n', '<C-w>', '<Cmd>BufferClose<CR>')

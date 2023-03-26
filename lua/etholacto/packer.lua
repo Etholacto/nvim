@@ -7,6 +7,20 @@ return require("packer").startup(function(use)
 	-- Packer can manage itself
 	use "wbthomason/packer.nvim"
 
+    --File nav tree
+    use{
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
+
+    --Icons for nvim tree
+    use('nvim-tree/nvim-web-devicons')
+
+    --Tabs for multiple windows
+    use{'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
 
 	--Neovim theme
 	use({ 
@@ -42,12 +56,8 @@ return require("packer").startup(function(use)
 	
 	--Tabline showing status + themes
 	use('vim-airline/vim-airline')
-	use({
-        'vim-airline/vim-airline-themes',
-        config = function()
-            vim.cmd = [[AirlineTheme bubblegum]]
-        end
-    })
+	use('vim-airline/vim-airline-themes')
+    vim.cmd[[AirlineTheme bubblegum]]
 	--Paser generator tool
 	use( "nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
 	--Save 4 file locations to jump to
@@ -56,19 +66,11 @@ return require("packer").startup(function(use)
 	use( 'mbbill/undotree')
 	--Plugin for Git
 	use( 'tpope/vim-fugitive')
-	--File nav tree
-	use{
-		'nvim-tree/nvim-tree.lua',
-		requires = {
-			'nvim-tree/nvim-web-devicons', -- optional, for file icons
-		},
-		tag = 'nightly' -- optional, updated every week. (see issue #1193)
-	}
 	--File finder
 	use{
 		"nvim-telescope/telescope.nvim", tag = "0.1.0",
 		--or			       , branch = "0.1.x",
-		requires = { {"nvim-lua/plenary.nvim"} }
+	requires = { {"nvim-lua/plenary.nvim"} }
 	}
 	--Automatically pairs parenthesis
 	use {
