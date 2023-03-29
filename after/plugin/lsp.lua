@@ -10,7 +10,7 @@ lsp.ensure_installed({
 	"jdtls",
 	"ltex",
 	"jedi_language_server",
-    "sqlls"
+	"sqlls"
 })
 
 local cmp = require('cmp')

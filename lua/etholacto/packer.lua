@@ -1,4 +1,4 @@
---lucius This file can be loaded by calling "lua require("plugins")" from your init.vim
+--This file can be loaded by calling "lua require("plugins")" from your init.vim
 
 -- Only require if you have packer configured as "opt"
 vim.cmd [[packadd packer.nvim]]
@@ -57,7 +57,8 @@ return require("packer").startup(function(use)
 	--Tabline showing status + themes
 	use('vim-airline/vim-airline')
 	use('vim-airline/vim-airline-themes')
-    vim.cmd[[AirlineTheme bubblegum]]
+    --vim.cmd[[autocmd AirlineToggledOn * AirlineTheme bubblegum]]
+
 	--Paser generator tool
 	use( "nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
 	--Save 4 file locations to jump to
@@ -78,5 +79,18 @@ return require("packer").startup(function(use)
 		config = function() require("nvim-autopairs").setup {} end
 	}
 
+    --Gives the keycombo that can be used after an operator is pressed
+    use {
+        "folke/which-key.nvim",
+        config = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+            require("which-key").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+        end
+    }
 
 end)
