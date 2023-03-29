@@ -53,7 +53,10 @@ return require("packer").startup(function(use)
 			{'rafamadriz/friendly-snippets'}, -- Optional
 		}
 	}
-	
+
+    --CoC autocomplete
+    use {'neoclide/coc.nvim', branch = 'release'}
+
 	--Tabline showing status + themes
 	use('vim-airline/vim-airline')
 	use('vim-airline/vim-airline-themes')
