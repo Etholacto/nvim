@@ -6,7 +6,7 @@ local lsp = require('lsp-zero').preset({
 })
 
 lsp.ensure_installed({
-	"omnisharp",
+    "omnisharp",
 	"jdtls",
 	"ltex",
 	"jedi_language_server",
