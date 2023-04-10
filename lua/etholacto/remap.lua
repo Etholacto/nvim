@@ -27,6 +27,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
+--Duplicate line on next line
+vim.keymap.set("n", "C-d", [[:t.]])
+
 --Vertical edit mode save and exit
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
