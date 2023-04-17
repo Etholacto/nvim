@@ -1,5 +1,4 @@
 require("etholacto")
-vim.cmd("autocmd VimEnter * AirlineTheme bubblegum")
 vim.cmd("autocmd VimEnter * Ex")
 vim.api.nvim_exec('language en_UK', true)
 print("Hello Master")

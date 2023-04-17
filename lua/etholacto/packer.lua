@@ -7,6 +7,23 @@ return require("packer").startup(function(use)
     -- Packer can manage itself
     use "wbthomason/packer.nvim"
 
+    --Neovim theme
+    use({ 
+        "folke/tokyonight.nvim",
+        config = function()
+            vim.cmd[[colorscheme tokyonight-night]]
+        end
+    })
+    
+    --Icons
+    use{"nvim-tree/nvim-web-devicons"}
+
+    --Tabline showing status
+    use{
+        "nvim-lualine/lualine.nvim",
+        requires = {"nvim-tree/nvim-web-devicons", opt = true}
+    }
+
     --File nav tree
     use{
         'nvim-tree/nvim-tree.lua',
@@ -16,19 +33,10 @@ return require("packer").startup(function(use)
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
 
-    --Icons for nvim tree
-    use('nvim-tree/nvim-web-devicons')
-
-    --Tabs for multiple windows
-    use{'romgrk/barbar.nvim', requires = 'nvim-web-devicons'}
-
-    --Neovim theme
-    use({ 
-        "folke/tokyonight.nvim",
-        config = function()
-            vim.cmd[[colorscheme tokyonight-night]]
-        end
-    })
+    use {
+        'romgrk/barbar.nvim', 
+        requires = 'nvim-tree/nvim-web-devicons'
+    }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -55,9 +63,6 @@ return require("packer").startup(function(use)
 
     use('mfussenegger/nvim-jdtls')
 
-    --Tabline showing status + themes
-    use('vim-airline/vim-airline')
-    use('vim-airline/vim-airline-themes')
     --Paser generator tool
     use( "nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
     use ('nvim-treesitter/playground')

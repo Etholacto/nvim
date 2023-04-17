@@ -14,6 +14,7 @@ vim.keymap.set("n", "J", "mzJ`z")
 --Half page jump with cursor in the middle
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
 --Search for word with cursor in the middle
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
@@ -42,7 +43,7 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 vim.keymap.set("n", "<C-s>", vim.cmd.w)
 
---Toggle the file tree
+--Toggle the file tree 
 vim.keymap.set("n","<leader>b", vim.cmd.NvimTreeToggle)
 
 --window managing
