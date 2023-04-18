@@ -1,43 +1,12 @@
---This file can be loaded by calling "lua require("plugins")" from your init.vim
-
--- Only require if you have packer configured as "opt"
 vim.cmd [[packadd packer.nvim]]
-
 return require("packer").startup(function(use)
-    -- Packer can manage itself
+
+    ------------------------Core-------------------------
+
+    --Packer
     use "wbthomason/packer.nvim"
 
-    --Neovim theme
-    use({ 
-        "folke/tokyonight.nvim",
-        config = function()
-            vim.cmd[[colorscheme tokyonight-night]]
-        end
-    })
-    
-    --Icons
-    use{"nvim-tree/nvim-web-devicons"}
-
-    --Tabline showing status
-    use{
-        "nvim-lualine/lualine.nvim",
-        requires = {"nvim-tree/nvim-web-devicons", opt = true}
-    }
-
-    --File nav tree
-    use{
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    }
-
-    use {
-        'romgrk/barbar.nvim', 
-        requires = 'nvim-tree/nvim-web-devicons'
-    }
-
+    -- Lsp
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
@@ -61,28 +30,124 @@ return require("packer").startup(function(use)
         }
     }
 
-    use('mfussenegger/nvim-jdtls')
-
     --Paser generator tool
     use( "nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
     use ('nvim-treesitter/playground')
-    --Save 4 file locations to jump to
-    use( 'theprimeagen/harpoon')
-    --Undotree to track undo's
-    use( 'mbbill/undotree')
-    --Plugin for Git
-    use( 'tpope/vim-fugitive')
+
+    --Expansion for LSP for eclipse(java)
+    use('mfussenegger/nvim-jdtls')
+
+    --Shows errors
+    use {
+        "folke/trouble.nvim",
+        requires = "nvim-tree/nvim-web-devicons",
+        config = function()
+            require("trouble").setup {}
+        end
+    }
+
+    --Highlights TODO's
+    use {
+        "folke/todo-comments.nvim",
+        requires = "nvim-lua/plenary.nvim",
+        config = function()
+            require("todo-comments").setup {
+            }
+        end
+    }
+
+    ------------------------Theme-------------------------
+
+    --Neovim theme
+    use({ 
+        "folke/tokyonight.nvim",
+        config = function()
+            vim.cmd[[colorscheme tokyonight-night]]
+        end
+    })
+
+    --Icons
+    use{"nvim-tree/nvim-web-devicons"}
+
+    --Tabline showing status
+    use{
+        "nvim-lualine/lualine.nvim",
+        requires = {"nvim-tree/nvim-web-devicons", opt = true}
+    }
+
+    ------------------------Tools-------------------------
+
+    --File nav tree
+    use{
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons', -- optional, for file icons
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
+
+    --Tabs for multiple files
+    use {
+        'romgrk/barbar.nvim', 
+        requires = 'nvim-tree/nvim-web-devicons'
+    }
+
     --File finder
     use{
         "nvim-telescope/telescope.nvim", tag = "0.1.0",
         --or			       , branch = "0.1.x",
         requires = { {"nvim-lua/plenary.nvim"} }
     }
+
+    --Save 4 file locations to jump to
+    use( 'theprimeagen/harpoon')
+
+    --Undotree to track undo's
+    use( 'mbbill/undotree')
+
+    --Context tree to jump too
+    use {
+        "utilyre/barbecue.nvim",
+        tag = "*",
+        requires = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons", -- optional dependency
+        },
+        config = function()
+            require("barbecue").setup()
+        end,
+    }
+
+    --Easier Search and Replace
+    use('nvim-pack/nvim-spectre')
+
     --Automatically pairs parenthesis
     use {
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
+
+    --Surround text with brackets, quotations, etc.
+    use('tpope/vim-surround')
+
+    --Parenthesis have more colours
+    use('HiPhish/nvim-ts-rainbow2')
+
+    --Auto Indents
+    use('lukas-reineke/indent-blankline.nvim')
+
+    ------------------------Git-------------------------
+
+    --Plugin for Git
+    use( 'tpope/vim-fugitive')
+    
+    --Shows differences in Git commits
+    use{
+        'sindrets/diffview.nvim',
+        requires = 'nvim-lua/plenary.nvim'
+    }
+
+    ------------------------Help-------------------------
 
     --Gives the keycombo that can be used after an operator is pressed
     use {

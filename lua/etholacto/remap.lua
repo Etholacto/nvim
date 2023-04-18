@@ -24,6 +24,10 @@ vim.keymap.set("n", "<C-j>", "<C-j>zz")
 vim.keymap.set("n", "<C-k>", "<C-k>zz")
 vim.keymap.set("x", "<leader>p", [["_dP]])
 
+--Jump to begging and end of line
+vim.keymap.set("n", "<C-l>", "$")
+vim.keymap.set("n", "<C-d>", '<Cmd>t.<CR>')
+
 --Yank and Paste to clipboard
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
@@ -34,8 +38,12 @@ vim.keymap.set("n", "C-d", [[:t.]])
 --Vertical edit mode save and exit
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+--Search and Replace
+vim.keymap.set('n', '<leader>sp', '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+    desc = "Search on current file"
+})
+--vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+--vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 --Easy Shoutout and Save
 vim.keymap.set("n", "<leader><leader>", function()
@@ -46,7 +54,10 @@ vim.keymap.set("n", "<C-s>", vim.cmd.w)
 --Toggle the file tree 
 vim.keymap.set("n","<leader>b", vim.cmd.NvimTreeToggle)
 
---window managing
+--Toggle treesitter Context
+vim.api.nvim_set_keymap('n', '<leader>c', '<cmd>TreesitterContextToggle<CR>', {silent = true, noremap = true})
+
+--Window Managing
 vim.keymap.set('n', '<A-1>', '<Cmd>BufferGoto 1<CR>')
 vim.keymap.set('n', '<A-2>', '<Cmd>BufferGoto 2<CR>')
 vim.keymap.set('n', '<A-3>', '<Cmd>BufferGoto 3<CR>') 
