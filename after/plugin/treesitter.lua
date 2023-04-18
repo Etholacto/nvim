@@ -34,4 +34,6 @@ require'nvim-treesitter.configs'.setup {
     autopairs = { enable = true },
     autotag = { enable = true },
 }
-require 'nvim-treesitter.install'.compilers = { "clang" } 
+require 'nvim-treesitter.install'.compilers = { "clang" }
+require 'nvim-treesitter.install'.compilers = { "javac" }
+require 'nvim-treesitter.install'.compilers = { "csc" }
