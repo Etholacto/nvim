@@ -48,15 +48,35 @@ lsp.set_preferences({
 })
 
 local lspconfig = require('lspconfig')
+local protocol = require('vim.lsp.protocol')
 
 lspconfig.jdtls.setup{
-    cmd = {'jdtls', workspaceFolder = vim.fn.getcwd()},
+    cmd = {'jdtls', workspaceFolder = vim.fn.getcwd()},   
+    filetypes = {'java'},
     root_dir = lspconfig.util.root_pattern('.git', 'src', 'pom.xml', 'build.gradle', '.')
 }
 
 lspconfig.omnisharp.setup{
     cmd = {'omnisharp', '--languageserver', '--hostPID', tostring(vim.fn.getpid())},
+    on_attach = function(client, bufnr)
+        -- Add formatting capabilities
+        client.resolved_capabilities.document_formatting = true
+        client.resolved_capabilities.document_range_formatting = true
+    -- Add highlight for references
+    protocol.DocumentHighlightKind = {
+        "Text", "Read", "Write"
+    }
+    end,
     root_dir = lspconfig.util.root_pattern('.git', 'global.json', 'project.json', 'packages.config')
+}
+
+lspconfig.clangd.setup{
+    cmd = {'clangd', '--background-index', '--clang-tidy'},
+  on_attach = function(client, bufnr)
+    -- Add formatting capabilities
+    client.resolved_capabilities.document_formatting = true
+    client.resolved_capabilities.document_range_formatting = true
+  end
 }
 
 lsp.setup()

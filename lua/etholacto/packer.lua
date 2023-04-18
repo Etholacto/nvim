@@ -37,9 +37,6 @@ return require("packer").startup(function(use)
     --Expansion for LSP for eclipse(java)
     use('mfussenegger/nvim-jdtls')
 
-    --Custom colours for errors
-    use('folke/lsp-colors.nvim')
-
     --Shows errors
     use {
         "folke/trouble.nvim",
