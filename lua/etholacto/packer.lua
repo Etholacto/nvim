@@ -30,12 +30,15 @@ return require("packer").startup(function(use)
         }
     }
 
-    --Paser generator tool
+    --Paser generator
     use( "nvim-treesitter/nvim-treesitter", {run = ":TSUpdate"})
     use ('nvim-treesitter/playground')
 
     --Expansion for LSP for eclipse(java)
     use('mfussenegger/nvim-jdtls')
+
+    --Custom colours for errors
+    use('folke/lsp-colors.nvim')
 
     --Shows errors
     use {
@@ -105,6 +108,9 @@ return require("packer").startup(function(use)
     --Undotree to track undo's
     use( 'mbbill/undotree')
 
+    --Provide Context
+    use('romgrk/nvim-treesitter-context')
+
     --Context tree to jump too
     use {
         "utilyre/barbecue.nvim",
@@ -117,9 +123,6 @@ return require("packer").startup(function(use)
             require("barbecue").setup()
         end,
     }
-
-    --Easier Search and Replace
-    use('nvim-pack/nvim-spectre')
 
     --Automatically pairs parenthesis
     use {
