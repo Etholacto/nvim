@@ -11,6 +11,7 @@ lsp.preset("recommended",
 
 lsp.ensure_installed({
     "omnisharp",
+    "clangd",
     "jdtls",
     "ltex",
     "lua_ls",
@@ -18,7 +19,6 @@ lsp.ensure_installed({
     "sqlls",
     "cssls",
     "html",
-    "tsserver"
 })
 
 local cmp = require('cmp')
@@ -29,6 +29,19 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
     ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<C-space>'] = cmp.mapping.complete(),
 })
+
+cmp.setup{
+    source = {
+        {name = 'nvim_lsp'}
+    }
+}
+
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- The following example advertise capabilities to `clangd`.
+require'lspconfig'.clangd.setup {
+  capabilities = capabilities,
+}
 
 cmp_mappings['<Tab>'] = nil
 cmp_mappings['<S-Tab>'] = nil
@@ -47,42 +60,23 @@ lsp.set_preferences({
     }
 })
 
-local lspconfig = require('lspconfig')
+lsp.on_attach(function(client, bufnr)
+  local opts = {buffer = bufnr, remap = false}
 
-lspconfig.jdtls.setup{
-    cmd = {'jdtls'},   
-    filetypes = {'java'},
-    on_attach = lsp.common_on_attach,
-    root_dir = function(fname)
-        return lspconfig.util.find_git_ancestor(fname) or lspconfig.util.path.dirname(fname)
-    end,
-    --root_dir = lspconfig.util.root_pattern('.git', '.iml', '.idea')
-}
-
-lspconfig.omnisharp.setup{
-    cmd = {'omnisharp', '--languageserver', '--hostPID', tostring(vim.fn.getpid())},
-    filetypes = {'cs'},
-    on_attach = function(client, bufnr)
-        -- Add formatting capabilities
-        client.resolved_capabilities.document_formatting = true
-        client.resolved_capabilities.document_range_formatting = true
-
-        -- Add highlight for references
-        protocol.DocumentHighlightKind = {
-            "Text", "Read", "Write"
-        }
-    end
-    --root_dir = lspconfig.util.root_pattern('*.sln', '*.csproj', 'project.json', 'gloabl.json', '.git')
-}
-
-lspconfig.clangd.setup{
-    cmd = {'clangd', '--background-index', '--clang-tidy'},
-    on_attach = function(client, bufnr)
-        -- Add formatting capabilities
-        client.resolved_capabilities.document_formatting = true
-        client.resolved_capabilities.document_range_formatting = true
-    end
-}
+  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+end)
 
 lsp.setup()
 
+vim.diagnostic.config({
+    virtual_text = true
+})

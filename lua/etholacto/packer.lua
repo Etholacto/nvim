@@ -99,9 +99,6 @@ return require("packer").startup(function(use)
         requires = { {"nvim-lua/plenary.nvim"} }
     }
 
-    --Save 4 file locations to jump to
-    use( 'theprimeagen/harpoon')
-
     --Undotree to track undo's
     use( 'mbbill/undotree')
 
@@ -131,7 +128,7 @@ return require("packer").startup(function(use)
     use('tpope/vim-surround')
 
     --Parenthesis have more colours
-    use('HiPhish/nvim-ts-rainbow2')
+    --use('HiPhish/nvim-ts-rainbow2')
 
     --Auto Indents
     use('lukas-reineke/indent-blankline.nvim')
