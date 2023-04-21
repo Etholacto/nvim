@@ -36,11 +36,16 @@ cmp.setup{
     }
 }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lspconf = require('lspconfig')
+--local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- The following example advertise capabilities to `clangd`.
-require'lspconfig'.clangd.setup {
-  capabilities = capabilities,
+lspconf.clangd.setup {
+  --capabilities = capabilities,
+}
+
+lspconf.jdtls.setup{
+    require('ftplugin/java')
 }
 
 cmp_mappings['<Tab>'] = nil
@@ -76,7 +81,3 @@ lsp.on_attach(function(client, bufnr)
 end)
 
 lsp.setup()
-
-vim.diagnostic.config({
-    virtual_text = true
-})
