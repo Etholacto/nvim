@@ -5,23 +5,24 @@ keymaps = P
 vim.g.mapleader = " "
 
 --key_mapping--
-local key_map = function (mode, key, result)
+local key_map = function(mode, key, result)
     vim.keymap.set(
-    mode,
-    key,
-    result,
-    {noremap = true, silent = true}
+        mode,
+        key,
+        result,
+        { noremap = true, silent = true }
     )
 end
 
---LSP
+--LPS
 function map_lsp_keys()
-    key_map('n', '<C-p>', ':lua vim.lsp.buf.definition()<CR>')
-    key_map('n', '<C-k>', 'lua vim.lsp.buf.signature_help()<CR>')
-    key_map('n', '<S-R>', ':lua vim.lsp.buf.references()<CR>')
-    key_map('n', '<S-H>', ':lua vim.lsp.buf.hover()<CR>')
-    key_map('n', '<leader>ca', ':lua vim.lsp.code_action()<CR>')
-    key_map('n', '<leader>nc', ':lua vim.lsp.buf.rename()<CR>')
+    key_map('n', 'gD', vim.lsp.buf.declaration)
+    key_map('n', 'gd', vim.lsp.buf.definition)
+    key_map('n', 'K', vim.lsp.buf.hover)
+    key_map('n', 'gi', vim.lsp.buf.implementation)
+    key_map('n', '<C-k>', vim.lsp.buf.signature_help)
+    key_map('n', '<leader>ca', vim.lsp.buf.code_action)
+    key_map('n', '<leader>nc', vim.lsp.buf.rename)
 end
 
 --Exit the current file
@@ -52,7 +53,7 @@ key_map("n", "<C-l>", "$")
 key_map("n", "<C-d>", '<Cmd>t.<CR>')
 
 --Yank and Paste to clipboard
-key_map({"n", "v"}, "<leader>y", [["+y]])
+key_map({ "n", "v" }, "<leader>y", [["+y]])
 key_map("n", "<leader>Y", [["+Y]])
 
 --Duplicate line on next line
@@ -63,7 +64,6 @@ key_map("i", "<C-c>", "<Esc>")
 
 --Search and Replace
 key_map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-key_map("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 --Easy Shoutout and Save
 key_map("n", "<leader><leader>", function()
@@ -71,12 +71,11 @@ key_map("n", "<leader><leader>", function()
 end)
 key_map("n", "<C-s>", vim.cmd.w)
 
---Nvim_tree 
-key_map("n","<leader>b", vim.cmd.NvimTreeToggle)
-
+--Nvim_tree
+key_map("n", "<leader>b", vim.cmd.NvimTreeToggle)
 
 --Toggle treesitter Context
-vim.keymap.set('n', '<leader>c', '<cmd>TreesitterContextToggle<CR>', {silent = true, noremap = true})
+key_map('n', '<leader>c', '<cmd>TreesitterContextToggle<CR>')
 
 --Window Managing
 key_map('n', '<A-1>', '<Cmd>BufferGoto 1<CR>')
@@ -90,15 +89,11 @@ key_map('n', '<A-8>', '<Cmd>BufferGoto 8<CR>')
 key_map('n', '<A-9>', '<Cmd>BufferGoto 9<CR>')
 key_map('n', '<A-w>', '<Cmd>BufferClose<CR>')
 
---Java
 function P.map_java_keys(bufnr)
     map_lsp_keys()
 
-    local spring_boot_run = 'mvn spring-boot:run -Dspring-boot.run.profiles=local'
-    local command = ':lua require("toggelterm").exec("' .. spring_boot_run .. '")<CR>'
-    key_map('n', '<leader>sr', command)
-    key_map('n', '<leader>oi', ':lua require("jdtls").organize_imports()<CR>')
-    key_map('n', '<leader>jc', ':lua require("jdtls").compile()<CR>')
+    key_map('n', '<leader>sr', ':lua require("jdtls).organize_imports()<CR>')
+    key_map('n', '<leader>sr', ':lua require("jdtls).compile("incremental")<CR>')
 end
 
 return P
