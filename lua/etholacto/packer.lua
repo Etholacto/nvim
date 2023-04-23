@@ -1,4 +1,15 @@
-vim.cmd [[packadd packer.nvim]]
+local ensure_packer = function()
+    local fn = vim.fn
+    local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    if fn.empty(fn.glob(install_path)) > 0 then
+        fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
+    return false
+end
+
+local packer_bootstrap = ensure_packer()
 return require("packer").startup(function(use)
     ------------------------Core-------------------------
 
@@ -87,11 +98,13 @@ return require("packer").startup(function(use)
         tag = 'nightly'                    -- optional, updated every week. (see issue #1193)
     }
 
-    --Tabs for multiple files
+    -- Buffer management
     use {
-        'romgrk/barbar.nvim',
-        requires = 'nvim-tree/nvim-web-devicons'
+        'akinsho/bufferline.nvim',
+        tag = "*",
+        requires = 'kyazdani42/nvim-web-devicons',
     }
+    use { "famiu/bufdelete.nvim" }
 
     --File finder
     use {
@@ -162,4 +175,8 @@ return require("packer").startup(function(use)
             }
         end
     }
+
+    if packer_bootstrap then
+        require('packer').sync()
+    end
 end)
