@@ -25,6 +25,12 @@ lspconfig.omnisharp.setup {
     capabilities = capabilities
 }
 
+lspconfig.lua_ls.setup {
+    root_dir = lspconfig.util.root_pattern("init.lua", ".luarc.json", ".luarc.jsonc", ".luacheckrc", ".stylua.toml",
+    "stylua.toml", "selene.toml", "selene.yml", ".git"),
+    capabilities = capabilities
+}
+
 -- luasnip setup
 local luasnip = require 'luasnip'
 
