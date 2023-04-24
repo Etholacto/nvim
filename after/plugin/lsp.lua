@@ -48,6 +48,35 @@ local luasnip = require('luasnip')
 --Lspkind
 local lspkind = require('lspkind')
 
+
+local kind_icons = {
+    Text = "",
+    Method = "",
+    Function = "",
+    Constructor = "",
+    Field = "ﰠ",
+    Variable = "",
+    Class = "",
+    Interface = "",
+    Module = "",
+    Property = "",
+    Unit = "",
+    Value = "",
+    Enum = "",
+    Keyword = "",
+    Snippet = "",
+    Color = "",
+    File = "",
+    Reference = "",
+    Folder = "",
+    EnumMember = "",
+    Constant = "",
+    Struct = "פּ",
+    Event = "",
+    Operator = "",
+    TypeParameter = "",
+}
+
 -- nvim-cmp setup
 local cmp = require 'cmp'
 cmp.setup {
@@ -68,6 +97,7 @@ cmp.setup {
             -- The function below will be called before any actual modifications from lspkind
             -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
             before = function(entry, vim_item)
+                vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind)
                 return vim_item
             end
         })

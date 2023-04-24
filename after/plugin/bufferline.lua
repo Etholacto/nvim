@@ -4,7 +4,7 @@ vim.opt.termguicolors = true
 require("bufferline").setup {
     options = {
         mode = "buffer",
-        separator_style = "slant",
+        separator_style = "padded_slant",
         buffer_close_icon = '',
         modified_icon = '●',
         close_icon = '',
@@ -36,7 +36,7 @@ require("bufferline").setup {
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(count, level)
             local icon = level:match("error") and "" or ""
-            return "" .. count .. "" .. icon .. ""
+            return "" .. icon .. " " .. count .. ""
         end,
     }
 }

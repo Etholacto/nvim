@@ -87,8 +87,9 @@ key_map('n', '<A-6>', '<Cmd>lua require("bufferline").go_to(6, true)<CR>')
 key_map('n', '<A-7>', '<Cmd>lua require("bufferline").go_to(7, true)<CR>')
 key_map('n', '<A-8>', '<Cmd>lua require("bufferline").go_to(8, true)<CR>')
 key_map('n', '<A-9>', '<Cmd>lua require("bufferline").go_to(9, true)<CR>')
-key_map('n', '<A-w>', '<Cmd>:lua require("bufdelete").bufdelete(0, true)<CR>')
+key_map('n', '<A-w>', '<Cmd>bdelete<CR>')
 
+--Java LSP keybinds
 function P.map_java_keys(bufnr)
     map_lsp_keys()
 
