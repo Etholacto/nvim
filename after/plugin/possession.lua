@@ -48,8 +48,8 @@ require('possession').setup {
             },
             force = false, -- or fun(buf): boolean
         },
-        nvim_tree = true,
-        tabby = false,
+        nvim_tree = false,
+        tabby = true,
         dap = false,
         delete_buffers = false,
     },

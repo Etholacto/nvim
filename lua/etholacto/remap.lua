@@ -71,23 +71,26 @@ key_map("n", "<leader><leader>", function()
 end)
 key_map("n", "<C-s>", vim.cmd.w)
 
---Nvim_tree
+--Nvim-Tree toggle
 key_map("n", "<leader>b", vim.cmd.NvimTreeToggle)
 
---Toggle treesitter Context
-key_map('n', '<leader>c', '<cmd>TreesitterContextToggle<CR>')
-
 --Window Managing
-key_map('n', '<A-1>', '<Cmd>lua require("bufferline").go_to(1, true)<CR>')
-key_map('n', '<A-2>', '<Cmd>lua require("bufferline").go_to(2, true)<CR>')
-key_map('n', '<A-3>', '<Cmd>lua require("bufferline").go_to(3, true)<CR>')
-key_map('n', '<A-4>', '<Cmd>lua require("bufferline").go_to(4, true)<CR>')
-key_map('n', '<A-5>', '<Cmd>lua require("bufferline").go_to(5, true)<CR>')
-key_map('n', '<A-6>', '<Cmd>lua require("bufferline").go_to(6, true)<CR>')
-key_map('n', '<A-7>', '<Cmd>lua require("bufferline").go_to(7, true)<CR>')
-key_map('n', '<A-8>', '<Cmd>lua require("bufferline").go_to(8, true)<CR>')
-key_map('n', '<A-9>', '<Cmd>lua require("bufferline").go_to(9, true)<CR>')
-key_map('n', '<A-w>', '<Cmd>bdelete<CR>')
+key_map("n", "<A-1>", "1gt")
+key_map("n", "<A-2>", "2gt")
+key_map("n", "<A-3>", "3gt")
+key_map("n", "<A-4>", "4gt")
+key_map("n", "<A-5>", "5gt")
+key_map("n", "<A-6>", "6gt")
+key_map("n", "<A-7>", "7gt")
+key_map("n", "<A-8>", "8gt")
+key_map("n", "<A-9>", "9gt")
+key_map("n", "<A-w>", ":tabclose<CR>")
+key_map("n", "<A-n>", ":tabn<CR>")
+key_map("n", "<A-p>", ":tabp<CR>")
+-- move current tab to previous position
+key_map("n", "<leader>tmp", ":-tabmove<CR>")
+-- move current tab to next position
+key_map("n", "<leader>tmn", ":+tabmove<CR>")
 
 --Java LSP keybinds
 function P.map_java_keys(bufnr)

@@ -85,21 +85,8 @@ return require("packer").startup(function(use)
 
     ------------------------Tools-------------------------
 
-    --File nav tree
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons', -- optional, for file icons
-        },
-        tag = 'nightly'                    -- optional, updated every week. (see issue #1193)
-    }
-
-    -- Buffer management
-    use {
-        'akinsho/bufferline.nvim',
-        tag = "*",
-        requires = 'kyazdani42/nvim-web-devicons',
-    }
+    --Tabline manager
+    use { 'nanozuki/tabby.nvim' }
 
     --File finder
     use {
@@ -109,6 +96,14 @@ return require("packer").startup(function(use)
     use {
         "nvim-telescope/telescope.nvim", tag = "0.1.1",
         requires = { { "nvim-lua/plenary.nvim" } }
+    }
+
+    --nvim-tree
+    use {
+        'nvim-tree/nvim-tree.lua',
+        requires = {
+            'nvim-tree/nvim-web-devicons'
+        }
     }
 
     --Search and open sessions and workspaces
