@@ -26,10 +26,10 @@ require("bufferline").setup {
         },
         offsets = {
             {
-                filetype = "NvimTree",
-                text = "File Explorer",
+                filetype = "filetree",
+                text = "",
                 text_align = "left",
-                separator = true,
+                highlight = "Explorer",
             }
         },
         diagnostics = "nvim_lsp",
@@ -39,4 +39,3 @@ require("bufferline").setup {
         end,
     }
 }
-

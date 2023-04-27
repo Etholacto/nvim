@@ -32,7 +32,7 @@ key_map('n', '<F5>', function() require('dap').continue() end)
 key_map('n', '<F10>', function() require('dap').step_over() end)
 key_map('n', '<F11>', function() require('dap').step_into() end)
 key_map('n', '<F12>', function() require('dap').step_out() end)
-key_map('n', '<A-b>', function() require('dap').toggle_breakpoint() end)
+key_map('n', '<leader>b', function() require('dap').toggle_breakpoint() end)
 key_map('n', '<Leader>B', function() require('dap').set_breakpoint() end)
 key_map('n', '<Leader>lp',
     function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
@@ -51,10 +51,17 @@ key_map('n', '<Leader>ds', function()
     local widgets = require('dap.ui.widgets')
     widgets.centered_float(widgets.scopes)
 end)
+key_map('n', '<leader>td', '<Cmd>Telescope dap commands<CR>')
 
 --GIT
 key_map('n', '<A-a>', '<Cmd>G add --a<CR> <Cmd>G commit<CR>')
-key_map('n', '<A-p>', ':G push')
+key_map('n', '<A-p>', '<Cmd>G push<CR>')
+
+--Nvim-IDE
+key_map('n', '<leader>lt', '<Cmd>Workspace LeftPanelToggle<CR>')
+key_map('n', '<leader>rt', '<Cmd>Workspace RightPanelToggle<CR>')
+key_map('n', '<leader>tt', '<Cmd>Workspace BottomPanelToggle<CR>')
+key_map('n', '<leader>ef', '<Cmd>Workspace Explorer focus<CR>')
 
 --Exit the current file
 key_map("n", "<leader>pv", vim.cmd.Ex)
@@ -96,14 +103,12 @@ key_map("i", "<C-c>", "<Esc>")
 --Search and Replace
 key_map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
---Easy Shoutout and Save
+--Easy Shoutout, Save and Quit
 key_map("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 key_map("n", "<C-s>", vim.cmd.w)
-
---Nvim-Tree toggle
-key_map("n", "<leader>b", vim.cmd.NvimTreeToggle)
+key_map("n", "<A-q>", "<Cmd>:wqa<CR>")
 
 --Window Managing
 key_map('n', '<A-1>', '<Cmd>lua require("bufferline").go_to(1, true)<CR>')

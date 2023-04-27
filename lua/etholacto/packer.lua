@@ -46,6 +46,7 @@ return require("packer").startup(function(use)
     --DAP
     use { 'mfussenegger/nvim-dap' }
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+    use { "ldelossa/nvim-dap-projects" }
 
     --Paser generator
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
@@ -97,6 +98,10 @@ return require("packer").startup(function(use)
         requires = { "nvim-tree/nvim-web-devicons", opt = true }
     }
 
+    use {
+        'ldelossa/nvim-ide'
+    }
+
     --Scrollbar with errors
     use("petertriho/nvim-scrollbar")
 
@@ -115,14 +120,6 @@ return require("packer").startup(function(use)
         requires = { { "nvim-lua/plenary.nvim" } }
     }
     use { 'desdic/telescope-rooter.nvim' }
-
-    --nvim-tree
-    use {
-        'nvim-tree/nvim-tree.lua',
-        requires = {
-            'nvim-tree/nvim-web-devicons'
-        }
-    }
 
     --Search and open sessions and workspaces
     use {
@@ -196,6 +193,8 @@ return require("packer").startup(function(use)
             }
         end
     }
+
+    use { 'folke/neodev.nvim' }
 
     --use { 'codota/tabnine-nvim', run = "pwsh.exe -file .\\dl_binaries.ps1" }
 
