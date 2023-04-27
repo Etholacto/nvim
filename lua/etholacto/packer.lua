@@ -43,6 +43,10 @@ return require("packer").startup(function(use)
     --Expansion for LSP for eclipse(java)
     use('mfussenegger/nvim-jdtls')
 
+    --DAP
+    use { 'mfussenegger/nvim-dap' }
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
+
     --Paser generator
     use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
     use('nvim-treesitter/playground')
@@ -77,16 +81,29 @@ return require("packer").startup(function(use)
     --Icons
     use { "nvim-tree/nvim-web-devicons" }
 
+    --Tabline manager (Waiting for better support)
+    --use { 'nanozuki/tabby.nvim' }
+
+    -- Buffer management
+    use {
+        'akinsho/bufferline.nvim',
+        tag = "*",
+        requires = 'kyazdani42/nvim-web-devicons',
+    }
+
     --Tabline showing status
     use {
         "nvim-lualine/lualine.nvim",
         requires = { "nvim-tree/nvim-web-devicons", opt = true }
     }
 
-    ------------------------Tools-------------------------
+    --Scrollbar with errors
+    use("petertriho/nvim-scrollbar")
 
-    --Tabline manager
-    use { 'nanozuki/tabby.nvim' }
+    --Scrollbar theme
+    use('folke/tokyonight.nvim')
+
+    ------------------------Tools-------------------------
 
     --File finder
     use {
@@ -97,6 +114,7 @@ return require("packer").startup(function(use)
         "nvim-telescope/telescope.nvim", tag = "0.1.1",
         requires = { { "nvim-lua/plenary.nvim" } }
     }
+    use { 'desdic/telescope-rooter.nvim' }
 
     --nvim-tree
     use {
@@ -149,6 +167,9 @@ return require("packer").startup(function(use)
     --Auto Indents
     use('lukas-reineke/indent-blankline.nvim')
 
+    --Highlight word under cursor
+    use { 'RRethy/vim-illuminate' }
+
     ------------------------Git-------------------------
 
     --Plugin for Git
@@ -175,6 +196,8 @@ return require("packer").startup(function(use)
             }
         end
     }
+
+    --use { 'codota/tabnine-nvim', run = "pwsh.exe -file .\\dl_binaries.ps1" }
 
     if packer_bootstrap then
         require('packer').sync()

@@ -20,7 +20,7 @@ require('possession').setup {
         delete = 'PossessionDelete',
         show = 'PossessionShow',
         list = 'PossessionList',
-        migrate = 'PossessionMigrate',
+        migrate = 'PossessionMigrate'
     },
     hooks = {
         before_save = function(name) return {} end,

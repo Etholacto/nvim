@@ -110,12 +110,17 @@ local config = {
         allow_incremental_sync = true,
     },
     init_options = {
-        bundles = {},
+        bundles = {
+            vim.fn.glob(
+            "C:/Users/Cedric/AppData/Local/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-0.45.0.jar",
+            1)
+        },
     },
 }
 
 config['on_attach'] = function(client, bufnr)
     require 'keymaps'.map_java_keys(bufnr);
+    require('jdtls').setup_dap({ hotcodereplace = 'auto' })
 end
 
 -- This starts a new client & server,

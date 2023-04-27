@@ -41,7 +41,12 @@ require("telescope").setup {
         sorting_strategy = 'ascending',
     },
     extensions = {
-        file_browser = {}
+        file_browser = {},
+        rooter = {
+            enable = true,
+            patterns = { '.git' },
+            debug = false,
+        }
     }
 }
 
@@ -49,3 +54,5 @@ require("telescope").setup {
 require("telescope").load_extension("file_browser")
 --Telescope - Possession integration
 require('telescope').load_extension('possession')
+--Telescope - Rooter integration
+require("telescope").load_extension('rooter')
