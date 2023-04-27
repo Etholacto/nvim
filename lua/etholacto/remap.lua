@@ -54,17 +54,14 @@ end)
 key_map('n', '<leader>td', '<Cmd>Telescope dap commands<CR>')
 
 --GIT
-key_map('n', '<A-a>', '<Cmd>G add --a<CR> <Cmd>G commit<CR>')
+key_map('n', '<A-a>', '<Cmd>G add --a<CR>')
+key_map('n', '<A-c>', '<Cmd>G commit<CR>')
 key_map('n', '<A-p>', '<Cmd>G push<CR>')
 
 --Nvim-IDE
 key_map('n', '<leader>lt', '<Cmd>Workspace LeftPanelToggle<CR>')
 key_map('n', '<leader>rt', '<Cmd>Workspace RightPanelToggle<CR>')
 key_map('n', '<leader>tt', '<Cmd>Workspace BottomPanelToggle<CR>')
-key_map('n', '<leader>ef', '<Cmd>Workspace Explorer focus<CR>')
-
---Exit the current file
-key_map("n", "<leader>pv", vim.cmd.Ex)
 
 --move highlighted text up and down
 key_map("v", "J", ":m '>+1<CR>gv=gv")
