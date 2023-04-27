@@ -26,41 +26,35 @@ function map_lsp_keys()
 end
 
 --DAP
-vim.keymap.set('n', '<F4>',
-"<Cmd>lua require('jdtls.dap').setup_dap_main_class_configs()<CR> <Cmd>lua require('jdtls').setup_dap()<CR>")
-vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
-vim.keymap.set('n', '<A-b>', function() require('dap').toggle_breakpoint() end)
-vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
-vim.keymap.set('n', '<Leader>lp',
-function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function()
+key_map('n', '<F4>',
+    "<Cmd>lua require('jdtls.dap').setup_dap_main_class_configs()<CR> <Cmd>lua require('jdtls').setup_dap()<CR>")
+key_map('n', '<F5>', function() require('dap').continue() end)
+key_map('n', '<F10>', function() require('dap').step_over() end)
+key_map('n', '<F11>', function() require('dap').step_into() end)
+key_map('n', '<F12>', function() require('dap').step_out() end)
+key_map('n', '<A-b>', function() require('dap').toggle_breakpoint() end)
+key_map('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+key_map('n', '<Leader>lp',
+    function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+key_map('n', '<Leader>dl', function() require('dap').run_last() end)
+key_map({ 'n', 'v' }, '<Leader>dh', function()
     require('dap.ui.widgets').hover()
 end)
-vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function()
+key_map({ 'n', 'v' }, '<Leader>dp', function()
     require('dap.ui.widgets').preview()
 end)
-vim.keymap.set('n', '<Leader>df', function()
+key_map('n', '<Leader>df', function()
     local widgets = require('dap.ui.widgets')
     widgets.centered_float(widgets.frames)
 end)
-vim.keymap.set('n', '<Leader>ds', function()
+key_map('n', '<Leader>ds', function()
     local widgets = require('dap.ui.widgets')
     widgets.centered_float(widgets.scopes)
 end)
 
-
---Code_Runner
-vim.keymap.set('n', '<leader>r', ':RunCode<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>rf', ':RunFile<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>rft', ':RunFile tab<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>rp', ':RunProject<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>rc', ':RunClose<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>crf', ':CRFiletype<CR>', { noremap = true, silent = false })
-vim.keymap.set('n', '<leader>crp', ':CRProjects<CR>', { noremap = true, silent = false })
+--GIT
+key_map('n', '<A-a>', '<Cmd>G add --a<CR> <Cmd>G commit<CR>')
+key_map('n', '<A-p>', ':G push')
 
 --Exit the current file
 key_map("n", "<leader>pv", vim.cmd.Ex)
