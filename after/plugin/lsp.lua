@@ -16,10 +16,10 @@ end)
 lsp.set_preferences({
     suggest_lsp_servers = false,
     sign_icons = {
-        error = "E",
-        warn = "W",
-        info = "I",
-        hint = "H",
+        error = "",
+        warn = "",
+        info = "",
+        hint = "",
     }
 })
 

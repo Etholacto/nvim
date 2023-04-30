@@ -61,7 +61,7 @@ require('ide').setup({
             }
         },
         Changes = {
-            default_height = 20,
+            default_height = 10,
         },
         Commits = {
             default_height = 5,
@@ -116,7 +116,7 @@ require('ide').setup({
     },
     -- default panel sizes for the different positions
     panel_sizes = {
-        left = 30,
+        left = 25,
         right = 30,
         bottom = 15
     }

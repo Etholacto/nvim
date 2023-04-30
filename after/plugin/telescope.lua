@@ -53,6 +53,6 @@ require("telescope").setup {
 --Telescope - file_browser integration
 require("telescope").load_extension("file_browser")
 --Telescope - Possession integration
-require('telescope').load_extension('possession')
+--require('telescope').load_extension('possession')
 --Telescope - Rooter integration
 require("telescope").load_extension('rooter')

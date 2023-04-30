@@ -1,3 +1,3 @@
 require("etholacto")
-vim.cmd("autocmd VimEnter * Workspace BottomPanelToggle")
+vim.cmd("colorscheme kanagawa")
 vim.api.nvim_exec('language en_UK', true)

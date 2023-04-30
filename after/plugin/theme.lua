@@ -19,7 +19,7 @@ require('kanagawa').setup({
             dragon = {},
             all = {
                 ui = {
-                    bg_gutter = "none"
+                    bg_gutter = "none",
                 }
             }
         },
@@ -33,15 +33,11 @@ require('kanagawa').setup({
             NormalDark = { fg = theme.ui.fg_dim, bg = theme.ui.bg_m3 },
             LazyNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
             MasonNormal = { bg = theme.ui.bg_m3, fg = theme.ui.fg_dim },
+            BufferLineFill = { bg = theme.ui.bg, fg = theme.ui.fg_dim },
         }
     end,
     theme = "wave", -- Load "wave" theme when 'background' option is not set
-    background = {
-        -- map the value of 'background' option to a theme
-        dark = "wave", -- try "dragon" !
-        light = "wave",
-    },
 })
 
 -- setup must be called before loading
-vim.cmd("colorscheme kanagawa")
+vim.cmd("colorscheme kanagawa-wave")

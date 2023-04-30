@@ -89,7 +89,7 @@ return require("packer").startup(function(use)
     use {
         'akinsho/bufferline.nvim',
         tag = "*",
-        requires = 'kyazdani42/nvim-web-devicons',
+        requires = 'nvim-tree/nvim-web-devicons',
     }
 
     --Tabline showing status
@@ -122,10 +122,10 @@ return require("packer").startup(function(use)
     use { 'desdic/telescope-rooter.nvim' }
 
     --Search and open sessions and workspaces
-    use {
-        'jedrzejboczar/possession.nvim',
-        requires = { 'nvim-lua/plenary.nvim' },
-    }
+    --use {
+    --    'jedrzejboczar/possession.nvim',
+    --    requires = { 'nvim-lua/plenary.nvim' },
+    --}
 
     --Open file at last location
     use("ethanholz/nvim-lastplace")

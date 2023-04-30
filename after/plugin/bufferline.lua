@@ -1,19 +1,20 @@
 local bufferline = require('bufferline')
 vim.opt.termguicolors = true
-require("bufferline").setup {
+bufferline.setup {
     options = {
-        mode = "buffer",
+        mode = "buffers",
+        always_show_bufferline = true,
         separator_style = "padded_slant",
         buffer_close_icon = '',
         modified_icon = '●',
         close_icon = '',
         left_trunc_marker = '',
         right_trunc_marker = '',
-        show_tab_indicators = true,
-        indicator = {
-            icon = '▎',
-            style = 'icon',
-        },
+        max_name_length = 15,
+        truncate_names = true,
+        tab_size = 18,
+        show_buffer_icons = true,
+        show_buffer_close_icons = false,
         color_icons = true,
         get_element_icon = function(element)
             local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(element.filetype, { default = false })
@@ -27,14 +28,23 @@ require("bufferline").setup {
         offsets = {
             {
                 filetype = "filetree",
-                text = "",
+                text = "File Explorer",
                 text_align = "left",
+                padding = 1,
                 highlight = "Explorer",
             }
         },
+        highlights = {
+            fill = {
+                bg = {
+                    attribute = "fg",
+                    highlight = "Pmenu"
+                },
+            },
+        },
         diagnostics = "nvim_lsp",
         diagnostics_indicator = function(count, level)
-            local icon = level:match("error") and "" or ""
+            local icon = level:match("error") and "" or ""
             return "" .. count .. "" .. icon .. ""
         end,
     }
