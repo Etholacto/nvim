@@ -9,11 +9,11 @@ return {
 			["gs"] = { name = "+surround" },
 			["]"] = { name = "+next" },
 			["["] = { name = "+prev" },
-			["<leader>b"] = { name = "+buffer" },
 			["<leader>f"] = { name = "+file/find" },
 			["<leader>g"] = { name = "+git" },
 			["<leader>s"] = { name = "+search" },
 			["<leader>w"] = { name = "+windows" },
+      ["<leader>x"] = { name = "+trouble"},
 		},
 	},
 	config = function(_, opts)

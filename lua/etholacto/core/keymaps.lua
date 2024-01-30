@@ -3,27 +3,20 @@ vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
 
----------------------
--- General Keymaps -------------------
+---------------- General Keymaps -------------------
 
 -- lazy
 keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- save file
 keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>")
-keymap.set({"i", "x", "n", "s"}, "A-f", "<cmd>lua vim.lsp.buf.format()<CR>")
-
--- clear search highlights
-keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+keymap.set("n", "A-f", "<cmd>lua vim.lsp.buf.format()<CR>")
 
 --move highlighted stuff up and down
 keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
 keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 keymap.set("n", "J", "mzJ`z")
-
---replace current word
-keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Replace word under Cursor"})
 
 -- window management
 keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically

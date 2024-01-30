@@ -1,5 +1,14 @@
 return {
-	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-fugitive",
+  },
+  { "f-person/git-blame.nvim",
+    config = function ()
+      local keymap = vim.keymap
+
+      keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", {desc = "Find git branches"})
+      keymap.set("n", "<leader>gc", "<cmd>Telescope git_status<cr>", {desc = "Find git changes"})
+    end
+  },
 	{
 		"lewis6991/gitsigns.nvim",
 		opts = {
