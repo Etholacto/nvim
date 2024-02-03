@@ -27,17 +27,17 @@ return {
   },
   {
     "RRethy/vim-illuminate",
-    event = {"BufNewFile", "BufReadPost"}
+    event = { "BufNewFile", "BufReadPost" }
   },
-  { "farmergreg/vim-lastplace"},
+  { "farmergreg/vim-lastplace" },
   {
     "nvim-pack/nvim-spectre",
-    event = {"BufNewFile"},
-    vim.keymap.set("n", "<leader>sr", "<cmd>lua require('spectre').toggle()<CR>", {desc = "Toggle Spectre"}),
+    event = { "BufNewFile" },
+    vim.keymap.set("n", "<leader>sr", "<cmd>lua require('spectre').toggle()<CR>", { desc = "Toggle Spectre" }),
   },
   {
     "folke/todo-comments.nvim",
-    dependencies = {"nvim-lua/plenary.nvim"},
+    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
   {
@@ -52,8 +52,19 @@ return {
     },
   },
   { 'mbbill/undotree',
-    vim.keymap.set('n', '<leader>su', vim.cmd.UndotreeToggle, {desc = "Toggle Undotree"}),
+    vim.keymap.set('n', '<leader>su', vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" }),
   },
-  {"voldikss/vim-floaterm"},
-  {"christoomey/vim-tmux-navigator"},
-  }
+  { "voldikss/vim-floaterm" },
+  { "christoomey/vim-tmux-navigator" },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = { options = vim.opt.sessionoptions:get() },
+    -- stylua: ignore
+    keys = {
+      { "<leader>qs", function() require("persistence").load() end,                desc = "Restore Session" },
+      { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
+      { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
+    },
+  },
+}

@@ -10,13 +10,16 @@ keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- save file
 keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>")
-keymap.set("n", "A-f", "<cmd>lua vim.lsp.buf.format()<CR>")
+keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", {desc = "Code format"})
 
 --move highlighted stuff up and down
 keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
 keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
-keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 keymap.set("n", "J", "mzJ`z")
+
+--Yank and paste
+vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>p", [["+p]])
 
 -- window management
 keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically

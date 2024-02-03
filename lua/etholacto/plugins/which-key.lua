@@ -10,6 +10,7 @@ return {
 			["]"] = { name = "+next" },
 			["["] = { name = "+prev" },
 			["<leader>f"] = { name = "+file/find" },
+      ["<leader>c"] = { name = "+code"},
 			["<leader>g"] = { name = "+git" },
 			["<leader>s"] = { name = "+search" },
 			["<leader>w"] = { name = "+windows" },
