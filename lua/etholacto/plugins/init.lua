@@ -55,4 +55,5 @@ return {
     vim.keymap.set('n', '<leader>su', vim.cmd.UndotreeToggle, {desc = "Toggle Undotree"}),
   },
   {"voldikss/vim-floaterm"},
-}
+  {"christoomey/vim-tmux-navigator"},
+  }

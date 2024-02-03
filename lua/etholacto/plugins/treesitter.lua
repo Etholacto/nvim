@@ -23,4 +23,9 @@ return {
     },
     sync_install = false,
   },
+  config = function ()
+    local tsInstall = require("nvim-treesitter.install")
+    tsInstall.prefer_git = false
+    tsInstall.compilers = {"clang", "gcc"}
+  end
 }
