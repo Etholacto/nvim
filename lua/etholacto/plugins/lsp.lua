@@ -1,4 +1,4 @@
-return {
+ return {
 	{
 		"neovim/nvim-lspconfig",
 		event = { "BufReadPre", "BufNewFile" },
@@ -56,10 +56,21 @@ return {
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 			end
 
-			lspconfig["clangd"].setup({
-				on_attach = on_attach,
-				capabilities = capabilities,
-			})
+      local default_install = {
+        "clangd",
+        "html",
+        "cssls",
+        "jsonls",
+        "ltex",
+        "pylsp",
+      }
+
+      for count = 1, #default_install do
+        lspconfig[default_install[count]].setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
+      end
 
 			lspconfig["omnisharp"].setup({
 				on_attach = on_attach,
@@ -95,13 +106,9 @@ return {
 				root_dir = lspconfig.util.root_pattern(".git", ".idea"),
 			})
 
-			lspconfig["pyright"].setup({
-				capabilities = capabilities,
-				on_attach = on_attach,
-			})
 		end,
 	},
-	{
+{
 		"williamboman/mason.nvim",
 		dependencies = {
 			"williamboman/mason-lspconfig.nvim",
@@ -132,7 +139,12 @@ return {
 					"omnisharp", --C# ls
 					"lua_ls", --Lua ls
 					"jdtls", --Java ls
-					"pyright", --Python ls
+          "pylsp", --Python ls
+          "html", --HTML ls
+          "cssls", --CSS ls
+          "bashls", --Bash ls
+          "jsonls", --Json ls
+          "ltex", --Latex ls
 				},
 				-- auto-install configured servers (with lspconfig)
 				automatic_installation = true, -- not the same as ensure_installed

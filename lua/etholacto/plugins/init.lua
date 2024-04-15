@@ -67,4 +67,5 @@ return {
       { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
   },
+  {"eandrju/cellular-automaton.nvim"},
 }

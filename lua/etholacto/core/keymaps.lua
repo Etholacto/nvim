@@ -10,28 +10,30 @@ keymap.set("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 
 -- save file
 keymap.set({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>")
+
+--Format code
 keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", {desc = "Code format"})
 
 --move highlighted stuff up and down
-keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
-keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("n", "J", "mzJ`z")
 
 --Yank and paste
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>p", [["+p]])
+keymap.set({"n", "v"}, "<leader>y", [["+y]])
+keymap.set("n", "<leader>p", [["+p]])
 
 -- window management
 keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically
 keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" })   -- split window horizontally
 keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" })      -- make split windows equal width & height
-keymap.set("n", "<leader>wx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+keymap.set("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
 -- Move to window using the <ctrl> hjkl keys
-keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
-keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
-keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
-keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+keymap.set("n", "<A-h>", "<C-w>h", { desc = "Go to left window", remap = true })
+keymap.set("n", "<A-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
+keymap.set("n", "<A-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
+keymap.set("n", "<A-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 
 -- buffers
 keymap.set("n", "<A-1>", "<Cmd>BufferLineGoToBuffer 1<CR>")
@@ -45,3 +47,6 @@ keymap.set("n", "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>")
 keymap.set("n", "<A-9>", "<Cmd>BufferLineGoToBuffer 9<CR>")
 keymap.set("n", "<A-w>", "<Cmd>bdelete<CR>")
 keymap.set("n", "<A-q>", "<Cmd>q<CR>")
+
+--funny
+keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>", {desc = "Make it Rain"});

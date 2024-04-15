@@ -37,6 +37,7 @@ return {
 
 		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Fuzzy find files" })
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })
+    keymap.set('n', '<leader>fg', "<cmd>Telescope live_grep<cr>", {desc = "Live grep in file"})
 		keymap.set(
 			"n",
 			"<leader>fb",
