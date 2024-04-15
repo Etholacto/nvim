@@ -25,10 +25,6 @@ return {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
   },
-  {
-    "RRethy/vim-illuminate",
-    event = { "BufNewFile", "BufReadPost" }
-  },
   { "farmergreg/vim-lastplace" },
   {
     "nvim-pack/nvim-spectre",
