@@ -5,6 +5,7 @@ return {
   opts = {
     integrations = {
       cmp = true,
+      fidget = true,
       gitsigns = true,
       headlines = true,
       illuminate = true,

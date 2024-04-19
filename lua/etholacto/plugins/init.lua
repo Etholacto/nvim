@@ -2,7 +2,11 @@ return {
   {
     "j-hui/fidget.nvim",
     dependencies = { "rcarriga/nvim-notify" },
-    opts = {},
+    opts = {
+      window = {
+        winblend = 0
+      }
+    },
   },
   {
     "lukas-reineke/indent-blankline.nvim",
