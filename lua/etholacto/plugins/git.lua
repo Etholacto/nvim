@@ -1,20 +1,9 @@
 return {
   { "tpope/vim-fugitive",
   },
-  -- {
-  --   "f-person/git-blame.nvim",
-  --   opts = {
-  --     hl_mode = "combine",
-  --   },
-  --   config = function()
-  --     local keymap = vim.keymap
-  --
-  --     keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>", { desc = "Find git branches" })
-  --     keymap.set("n", "<leader>gc", "<cmd>Telescope git_status<cr>", { desc = "Find git changes" })
-  --   end
-  -- },
   {
     "lewis6991/gitsigns.nvim",
+    event = {"BufReadPre"},
     opts = {
       signs = {
         add = { text = "+" },
@@ -25,7 +14,7 @@ return {
         untracked = { text = "┆" },
       },
       signcolumn = true, -- Toggle with `:Gitsigns toggle_signs`
-      numhl = false,  -- Toggle with `:Gitsigns toggle_numhl`
+      numhl = true,  -- Toggle with `:Gitsigns toggle_numhl`
       linehl = false, -- Toggle with `:Gitsigns toggle_linehl`
       word_diff = false, -- Toggle with `:Gitsigns toggle_word_diff`
       watch_gitdir = {
