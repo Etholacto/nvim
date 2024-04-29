@@ -2,7 +2,11 @@ return {
   {
     "j-hui/fidget.nvim",
     dependencies = { "rcarriga/nvim-notify" },
-    opts = {},
+    opts = {
+      window = {
+        winblend = 0
+      }
+    },
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -44,7 +48,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      theme = "catppuccin",
+      theme = "tokyonight",
     },
   },
   { 'mbbill/undotree',

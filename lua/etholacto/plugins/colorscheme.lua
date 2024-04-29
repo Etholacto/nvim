@@ -1,35 +1,45 @@
 return {
-  "catppuccin/nvim",
-  name = "catppuccin",
+  "folke/tokyonight.nvim",
+  lazy = false,
   priority = 1000,
   opts = {
-    integrations = {
-      cmp = true,
-      gitsigns = true,
-      headlines = true,
-      illuminate = true,
-      indent_blankline = { enabled = true },
-      lsp_trouble = true,
-      mason = true,
-      mini = true,
-      native_lsp = {
-        enabled = true,
-        underlines = {
-          errors = { "undercurl" },
-          hints = { "undercurl" },
-          warnings = { "undercurl" },
-          information = { "undercurl" },
-        },
-      },
-      notify = true,
-      semantic_tokens = true,
-      telescope = true,
-      treesitter = true,
-      which_key = true,
-    },
+    style = "moon",
+    light_style = "day",
+    transparent = false,
+    terminal_colors = true,
+    on_highlights = function(hl, c)
+      local prompt = "#2d3149"
+      hl.TelescopeNormal = {
+        bg = c.bg_dark,
+        fg = c.fg_dark,
+      }
+      hl.TelescopeBorder = {
+        bg = c.bg_dark,
+        fg = c.bg_dark,
+      }
+      hl.TelescopePromptNormal = {
+        bg = prompt,
+      }
+      hl.TelescopePromptBorder = {
+        bg = prompt,
+        fg = prompt,
+      }
+      hl.TelescopePromptTitle = {
+        bg = prompt,
+        fg = prompt,
+      }
+      hl.TelescopePreviewTitle = {
+        bg = c.bg_dark,
+        fg = c.bg_dark,
+      }
+      hl.TelescopeResultsTitle = {
+        bg = c.bg_dark,
+        fg = c.bg_dark,
+      }
+    end,
   },
   config = function()
     --load colorscheme
-    vim.cmd([[colorscheme catppuccin-mocha]])
+    vim.cmd([[colorscheme tokyonight-moon]])
   end,
 }
