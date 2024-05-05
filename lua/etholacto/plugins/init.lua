@@ -31,11 +31,6 @@ return {
   },
   { "farmergreg/vim-lastplace" },
   {
-    "nvim-pack/nvim-spectre",
-    event = { "BufNewFile" },
-    vim.keymap.set("n", "<leader>sr", "<cmd>lua require('spectre').toggle()<CR>", { desc = "Toggle Spectre" }),
-  },
-  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
@@ -52,7 +47,7 @@ return {
     },
   },
   { 'mbbill/undotree',
-    vim.keymap.set('n', '<leader>su', vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" }),
+    vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle, { desc = "Toggle Undotree" }),
   },
   { "voldikss/vim-floaterm" },
   { "christoomey/vim-tmux-navigator" },
@@ -67,5 +62,4 @@ return {
       { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
   },
-  {"eandrju/cellular-automaton.nvim"},
 }
