@@ -22,7 +22,7 @@ return {
       tab_size = 18,
       get_element_icon = function(element)
         local icon, hl = require('nvim-web-devicons').get_icon_by_filetype(element.filetype, { default = false })
-        return icon
+        return icon, hl
       end,
       hover = {
         enabled = true,
@@ -30,7 +30,7 @@ return {
         reveal = { 'close' }
       },
       diagnostics_indicator = function(count, level, diagnostics_dict, context)
-        local icon = level:match("error") and "" or ""
+        local icon = level:match("error") and "" or ""
         return "" .. icon .. " " .. count .. ""
       end,
     },

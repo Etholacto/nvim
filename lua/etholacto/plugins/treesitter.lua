@@ -3,11 +3,12 @@ return {
   version = false, -- last release is way too old and doesn't work on Windows
   build = ":TSUpdate",
   event = { "VeryLazy" },
-  cmd = "TSUpdate", "TSInstall",
+  cmd = "TSUpdate",
+  "TSInstall",
   opts = {
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting= true,
+      additional_vim_regex_highlighting = false,
     },
     indent = { enable = true },
     ensure_installed = {
@@ -20,12 +21,18 @@ return {
       "latex",
       "lua",
       "python",
+      "sql",
+      "css",
+      "html"
     },
-    sync_install = false,
+    sync_install = true,
+    smart_rename = { enable = true },
+    autotag = {
+      enable = true,
+      enable_rename = true,
+      enable_close = true,
+      enable_close_on_slash = true,
+
+    },
   },
-  config = function ()
-    local tsInstall = require("nvim-treesitter.install")
-    tsInstall.prefer_git = false
-    tsInstall.compilers = {"clang", "gcc"}
-  end
 }
