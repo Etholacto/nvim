@@ -47,6 +47,3 @@ keymap.set("n", "<A-8>", "<Cmd>BufferLineGoToBuffer 8<CR>")
 keymap.set("n", "<A-9>", "<Cmd>BufferLineGoToBuffer 9<CR>")
 keymap.set("n", "<A-w>", "<Cmd>bdelete<CR>")
 keymap.set("n", "<A-q>", "<Cmd>q<CR>")
-
---funny
-keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>", {desc = "Make it Rain"});

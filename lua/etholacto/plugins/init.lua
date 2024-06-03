@@ -62,4 +62,40 @@ return {
       { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
   },
+  { "tpope/vim-surround" },
+  {
+    "zbirenbaum/neodim",
+    event = "LspAttach",
+    config = function()
+      require("neodim").setup({
+        refresh_delay = 75,
+        alpha = 0.75,
+        blend_color = "#10171F",
+        hide = {
+          underline = true,
+          virtual_text = true,
+          signs = true,
+        },
+        regex = {
+          "[uU]nused",
+          "[nN]ever [rR]ead",
+          "[nN]ot [rR]ead",
+        },
+        priority = 128,
+        disable = {},
+      })
+    end
+  },
+  {
+    "karb94/neoscroll.nvim",
+    config = function()
+      require('neoscroll').setup { mappings = {}
+      }
+      local t = {}
+      -- Syntax: t[keys] = {function, {function arguments}}
+      t['<C-k>'] = { 'scroll', { '-vim.api.nvim_win_get_height(0)', 'true', '350', [['sine']] } }
+      t['<C-j>'] = { 'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '350', [['sine']] } }
+      require('neoscroll.config').set_mappings(t)
+    end
+  },
 }
