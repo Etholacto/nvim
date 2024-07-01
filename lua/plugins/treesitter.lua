@@ -13,8 +13,15 @@ return {
     indent = { enable = true },
     auto_install = true, -- automatically install syntax support when entering new file type buffer
     ensure_installed = {
+      'c',
+      'c_sharp',
+      'cpp',
+      'java',
+      'python',
       'lua',
       'comment',
+      'vim',
+      'vimdoc',
     },
   },
   config = function(_, opts)
