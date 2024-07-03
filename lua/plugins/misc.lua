@@ -9,31 +9,8 @@ return {
     },
   },
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    config = function()
-      local ibl = require("ibl")
-      ibl.setup({
-        indent = {
-          char = "╎",
-        }
-      })
-    end
-  },
-  {
-    "NvChad/nvim-colorizer.lua",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-  },
-  {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
-  },
-  { "farmergreg/vim-lastplace" },
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
   },
   {
     "utilyre/barbecue.nvim",
@@ -61,30 +38,6 @@ return {
       { "<leader>ql", function() require("persistence").load({ last = true }) end, desc = "Restore Last Session" },
       { "<leader>qd", function() require("persistence").stop() end,                desc = "Don't Save Current Session" },
     },
-  },
-  { "tpope/vim-surround" },
-  {
-    "zbirenbaum/neodim",
-    event = "LspAttach",
-    config = function()
-      require("neodim").setup({
-        refresh_delay = 75,
-        alpha = 0.75,
-        blend_color = "#10171F",
-        hide = {
-          underline = true,
-          virtual_text = true,
-          signs = true,
-        },
-        regex = {
-          "[uU]nused",
-          "[nN]ever [rR]ead",
-          "[nN]ot [rR]ead",
-        },
-        priority = 128,
-        disable = {},
-      })
-    end
   },
   {
     "karb94/neoscroll.nvim",

@@ -7,11 +7,11 @@ return {
       -- https://github.com/mfussenegger/nvim-dap
       'mfussenegger/nvim-dap',
       -- https://github.com/theHamsta/nvim-dap-virtual-text
-      'theHamsta/nvim-dap-virtual-text',   -- inline variable text while debugging
+      'theHamsta/nvim-dap-virtual-text',    -- inline variable text while debugging
       -- https://github.com/nvim-telescope/telescope-dap.nvim
-      'nvim-telescope/telescope-dap.nvim', -- telescope integration with dap
+      'nvim-telescope/telescope-dap.nvim',  -- telescope integration with dap
       --https://github.com/nvim-neotest/nvim-nio
-      "nvim-neotest/nvim-nio"              --library for nvim dap ui
+      "nvim-neotest/nvim-nio"               --library for nvim dap ui
     },
 
     -- stylua: ignore
@@ -80,7 +80,7 @@ return {
             }
           },
           size = 40,
-          position = "left", -- Can be "left" or "right"
+          position = "left",  -- Can be "left" or "right"
         },
         {
           elements = {
@@ -88,7 +88,7 @@ return {
             "console",
           },
           size = 10,
-          position = "bottom", -- Can be "bottom" or "top"
+          position = "bottom",  -- Can be "bottom" or "top"
         }
       },
       mappings = {
@@ -228,28 +228,6 @@ return {
       end,
     }
   },
-  --   {
-  --     "jay-babu/mason-nvim-dap.nvim",
-  --     dependencies = {
-  --       "mason.nvim",
-  --       "mfussenegger/nvim-dap"
-  --     },
-  --     cmd = { "DapInstall", "DapUninstall" },
-  --     config = function()
-  --       local masonDAP = require('mason-nvim-dap')
-  --
-  --       masonDAP.setup({
-  --         automatic_installation = true,
-  --         ensure_installed = {
-  --           "debugpy",
-  --           "java-debug-adapter",
-  --           "java-test",
-  --           "codelldb",
-  --           "netcoredbg",
-  --         },
-  --       })
-  --     end,
-  --   },
   {
     --    - https://github.com/theHamsta/nvim-dap-virtual-text
     'theHamsta/nvim-dap-virtual-text',
