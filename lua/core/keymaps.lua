@@ -16,9 +16,12 @@ keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 keymap.set("n", "J", "mzJ`z")
 
---Yank and paste
-keymap.set({"n", "v"}, "<leader>y", [["+y]])
-keymap.set("n", "<leader>p", [["+p]])
+----Yank and paste
+--keymap.set({"n", "v"}, "<leader>y", [["+y]])
+--keymap.set("n", "<leader>p", [["+p]])
+
+--replace current word
+keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], {desc = "Replace current word"})
 
 -- window management
 keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically
