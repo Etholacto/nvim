@@ -21,7 +21,7 @@ return {
     local lspkind = require("lspkind")
 
     require('luasnip.loaders.from_vscode').lazy_load()
-    -- luasnip.config.setup({})
+    luasnip.config.setup({})
 
     cmp.setup({
       completion = {
@@ -42,26 +42,26 @@ return {
           behavior = cmp.ConfirmBehavior.Replace,
           select = true,
         },
-        -- -- Tab through suggestions or when a snippet is active, tab to the next argument
-        -- ['<Tab>'] = cmp.mapping(function(fallback)
-        --   if cmp.visible() then
-        --     cmp.select_next_item()
-        --   elseif luasnip.expand_or_locally_jumpable() then
-        --     luasnip.expand_or_jump()
-        --   else
-        --     fallback()
-        --   end
-        -- end, { 'i', 's' }),
-        -- -- Tab backwards through suggestions or when a snippet is active, tab to the next argument
-        -- ['<S-Tab>'] = cmp.mapping(function(fallback)
-        --   if cmp.visible() then
-        --     cmp.select_prev_item()
-        --   elseif luasnip.locally_jumpable(-1) then
-        --     luasnip.jump(-1)
-        --   else
-        --     fallback()
-        --   end
-        -- end, { 'i', 's' }),
+        -- Tab through suggestions or when a snippet is active, tab to the next argument
+        ['<Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif luasnip.expand_or_locally_jumpable() then
+            luasnip.expand_or_jump()
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
+        -- Tab backwards through suggestions or when a snippet is active, tab to the next argument
+        ['<S-Tab>'] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif luasnip.locally_jumpable(-1) then
+            luasnip.jump(-1)
+          else
+            fallback()
+          end
+        end, { 'i', 's' }),
       },
       sources = cmp.config.sources({
         { name = "nvim_lsp" }, -- lsp
@@ -75,6 +75,11 @@ return {
           maxwidth = 50,
           ellipsis_char = "...",
         }),
+        window = {
+          -- Add borders to completions popups
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
+        },
       }
     })
   end,
